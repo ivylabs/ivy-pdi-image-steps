@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="ImageConverterStep" iconfile="ImageConverterStep.png" description="Image Converter Step" 
+  tooltip="Is capable to converter images" category="Image Manipulation" 
+  classname="com.ivyis.di.trans.steps.image.converter.ImageConverterStepMeta">
+	<libraries>
+		<library name="lib/pdi.imageconverter.step-0.0.1.jar"/>
+		<library name="lib/imagej-1.47.jar"/>
+	</libraries>
+</plugin>

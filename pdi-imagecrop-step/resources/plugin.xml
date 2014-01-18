@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="ImageCropStep" iconfile="ImageCropStep.jpg" description="Image Crop Step" 
+  tooltip="Is capable to crop images" category="Image Manipulation" 
+  classname="com.ivyis.di.trans.steps.image.crop.ImageCropStepMeta">
+	<libraries>
+		<library name="lib/pdi.imagecrop.step-0.0.1.jar"/>
+		<library name="lib/imagej-1.47.jar"/>
+	</libraries>
+</plugin>
