@@ -7,9 +7,8 @@ import org.pentaho.di.trans.step.StepDataInterface;
 /**
  * This class contains the methods to set and retrieve the status of the step data.
  * 
- * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
- * @version $Revision: 666 $
- * 
+ * @author <a href="mailto:joel.latino@ivy-is.co.uk">Joel Latino</a>
+ * @since 1.0.0
  */
 public class ImageResizeStepData extends BaseStepData implements StepDataInterface {
   RowMetaInterface outputRowMeta = null;

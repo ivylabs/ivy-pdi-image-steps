@@ -21,9 +21,8 @@ import org.pentaho.di.trans.step.StepMetaInterface;
 /**
  * This class is responsible to processing the data rows.
  * 
- * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
- * @version $Revision: 666 $
- * 
+ * @author <a href="mailto:joel.latino@ivy-is.co.uk">Joel Latino</a>
+ * @since 1.0.0
  */
 public class ImageConverterStep extends BaseStep implements StepInterface {
 

@@ -3,10 +3,10 @@ package com.ivyis.di.trans.steps.image.converter;
 import org.pentaho.di.i18n.BaseMessages;
 
 /**
+ * Enum of conversion type allowed for convert.
  * 
- * @author latino
- * @since $version
- * 
+ * @author <a href="mailto:joel.latino@ivy-is.co.uk">Joel Latino</a>
+ * @since 1.0.0
  */
 public enum ConverterType {
 

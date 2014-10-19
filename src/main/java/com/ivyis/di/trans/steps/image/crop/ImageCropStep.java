@@ -14,6 +14,7 @@ import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowDataUtil;
 import org.pentaho.di.core.row.RowMetaInterface;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.Trans;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStep;
@@ -25,9 +26,8 @@ import org.pentaho.di.trans.step.StepMetaInterface;
 /**
  * This class is responsible to processing the data rows.
  * 
- * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
- * @version $Revision: 666 $
- * 
+ * @author <a href="mailto:joel.latino@ivy-is.co.uk">Joel Latino</a>
+ * @since 1.0.0
  */
 public class ImageCropStep extends BaseStep implements StepInterface {
 
@@ -96,7 +96,7 @@ public class ImageCropStep extends BaseStep implements StepInterface {
       }
 
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw new KettleException(BaseMessages.getString(PKG, "ImageCropStep.Exception.generic"));
     }
     putRow(data.outputRowMeta, outputRow);
 

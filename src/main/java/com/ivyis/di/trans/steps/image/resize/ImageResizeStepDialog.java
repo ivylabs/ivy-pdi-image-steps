@@ -31,11 +31,10 @@ import org.pentaho.di.ui.core.dialog.ErrorDialog;
 import org.pentaho.di.ui.trans.step.BaseStepDialog;
 
 /**
- * This class is responsible for Push notification UI on Spoon.
+ * This class is responsible for the UI in Spoon of image resize step.
  * 
- * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
- * @version $Revision: 666 $
- * 
+ * @author <a href="mailto:joel.latino@ivy-is.co.uk">Joel Latino</a>
+ * @since 1.0.0
  */
 public class ImageResizeStepDialog extends BaseStepDialog implements StepDialogInterface {
 

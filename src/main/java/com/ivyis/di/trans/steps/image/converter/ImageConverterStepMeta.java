@@ -30,9 +30,8 @@ import org.w3c.dom.Node;
  * This class is responsible for implementing functionality regarding step meta. All Kettle steps
  * have an extension of this where private fields have been added with public accessors.
  * 
- * @author <a href="mailto:jlatino@sapo.pt">Joel Latino</a>
- * @version $Revision: 666 $
- * 
+ * @author <a href="mailto:joel.latino@ivy-is.co.uk">Joel Latino</a>
+ * @since 1.0.0
  */
 @Step(id = "ImageConverterStep", name = "ImageConverterStep.Step.Name",
     description = "ImageConverterStep.Step.Description",
@@ -190,70 +189,7 @@ public class ImageConverterStepMeta extends BaseStepMeta implements StepMetaInte
    */
   @Override
   public void check(List<CheckResultInterface> remarks, TransMeta transmeta, StepMeta stepMeta,
-      RowMetaInterface prev, String[] input, String[] output, RowMetaInterface info) {
-    // CheckResult cr = null;
-    // if (prev == null || prev.size() == 0) {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_WARNING, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.NotReceivingFields"), stepMeta);
-    // remarks.add(cr);
-    // } else {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_OK, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.StepRecevingData", prev.size() + ""), stepMeta);
-    // remarks.add(cr);
-    // if (prev.indexOfValue(registrationId) < 0) {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_ERROR, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.NoRegistrationIdFound"), stepMeta);
-    // remarks.add(cr);
-    // }
-    // if (retrying && "0".equals(retryNumber)) {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_ERROR, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.NoRetryNumberDefined"), stepMeta);
-    // remarks.add(cr);
-    // }
-    // if (retrying && "0".equals(delayBeforeLastRetry)) {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_ERROR, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.NoDelayBeforeLastRetryDefined"), stepMeta);
-    // remarks.add(cr);
-    // }
-    //
-    // String errorMessage = "";
-    // boolean errorFound = false;
-    // // Starting from selected fields in ...
-    // for (String f : fieldStream) {
-    // if (prev.indexOfValue(f) < 0) {
-    // errorMessage += "\t\t" + f + Const.CR;
-    // errorFound = true;
-    // }
-    // }
-    // if (errorFound) {
-    // errorMessage = BaseMessages.getString(PKG, "AndroidPushNotification.CheckResult.FieldsFound",
-    // errorMessage);
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_ERROR, errorMessage, stepMeta);
-    // remarks.add(cr);
-    // } else {
-    // if (fieldStream.size() > 0) {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_OK, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.AllFieldsFound"), stepMeta);
-    // remarks.add(cr);
-    // } else {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_WARNING, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.NoFieldsEntered"), stepMeta);
-    // remarks.add(cr);
-    // }
-    // }
-    //
-    // // See if we have input streams leading to this step!
-    // if (input.length > 0) {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_OK, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.StepRecevingData2"), stepMeta);
-    // remarks.add(cr);
-    // } else {
-    // cr = new CheckResult(CheckResultInterface.TYPE_RESULT_ERROR, BaseMessages.getString(PKG,
-    // "AndroidPushNotification.CheckResult.NoInputReceivedFromOtherSteps"), stepMeta);
-    // remarks.add(cr);
-    // }
-    // }
-  }
+      RowMetaInterface prev, String[] input, String[] output, RowMetaInterface info) {}
 
   /**
    * Get the Step dialog, needs for configure the step.
