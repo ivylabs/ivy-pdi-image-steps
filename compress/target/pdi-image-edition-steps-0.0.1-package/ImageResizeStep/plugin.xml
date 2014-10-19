@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<plugin id="ImageResizeStep" iconfile="ImageResizeStep.png" description="Image Resize Step" 
-  tooltip="Is capable to resize images" category="Image Manipulation" 
-  classname="com.ivyis.di.trans.steps.image.resize.ImageResizeStepMeta">
-	<libraries>
-		<library name="lib/pdi.imageresize.step-0.0.1.jar"/>
-		<library name="lib/imagej-1.47.jar"/>
-	</libraries>
-</plugin>
