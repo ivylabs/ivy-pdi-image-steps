@@ -1,4 +1,7 @@
-package com.ivyis.di.trans.steps.image.crop;
+package com.ivyis.di.ui.trans.steps.image;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -10,10 +13,13 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
@@ -28,7 +34,12 @@ import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
 import org.pentaho.di.ui.core.dialog.ErrorDialog;
+import org.pentaho.di.ui.core.dialog.ShowBrowserDialog;
+import org.pentaho.di.ui.core.widget.TableView;
 import org.pentaho.di.ui.trans.step.BaseStepDialog;
+import org.pentaho.di.ui.util.ImageUtil;
+
+import com.ivyis.di.trans.steps.image.crop.ImageCropStepMeta;
 
 /**
  * This class is responsible for the UI in Spoon of image crop step.
@@ -281,6 +292,52 @@ public class ImageCropStepDialog extends BaseStepDialog implements StepDialogInt
 
     BaseStepDialog.positionBottomButtons(shell, new Button[] {wOK, wCancel}, margin, null);
 
+    final Button button = new Button(shell, SWT.PUSH);
+    button.setImage(ImageUtil.getImage(display, getClass(), "ivyis_logo.png"));
+    button.setToolTipText("Ivy Information Systems");
+    button.addSelectionListener(new SelectionAdapter() {
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        final ShowBrowserDialog sbd =
+            new ShowBrowserDialog(shell, BaseMessages.getString(PKG,
+                "ExportCmdLine.CommandLine.Title"),
+                "<html><script>window.location=\"http://www.ivy-is.co.uk\"</script></html>");
+        sbd.open();
+      }
+    });
+
+    // Determine the largest button in the array
+    Rectangle largest = null;
+    button.pack(true);
+    final Rectangle r = button.getBounds();
+    if (largest == null || r.width > largest.width) {
+      largest = r;
+    }
+
+    // Also, set the tooltip the same as the name if we don't have one...
+    if (button.getToolTipText() == null) {
+      button.setToolTipText(Const.replace(button.getText(), "&", ""));
+    }
+
+    // Make buttons a bit larger... (nicer)
+    largest.width += 10;
+    if ((largest.width % 2) == 1) {
+      largest.width++;
+    }
+
+    BaseStepDialog.rightAlignButtons(new Button[] {button}, largest.width, margin, null);
+    if (Const.isOSX()) {
+      final List<TableView> tableViews = new ArrayList<TableView>();
+      getTableViews(shell, tableViews);
+      button.addSelectionListener(new SelectionAdapter() {
+        public void widgetSelected(SelectionEvent e) {
+          for (TableView view : tableViews) {
+            view.applyOSXChanges();
+          }
+        }
+      });
+    }
+
     // Add listeners
     lsCancel = new Listener() {
       public void handleEvent(Event e) {
@@ -406,5 +463,32 @@ public class ImageCropStepDialog extends BaseStepDialog implements StepDialogInt
     input.setAxisY(wAxisYField.getText());
     input.setTargetWidth(wTargetWidthField.getText());
     input.setTargetHeight(wTargetHeightField.getText());
+  }
+
+  /**
+   * Gets the table views.
+   * 
+   * @param parentControl the parent control
+   * @param tableViews the table views
+   * @return the table views
+   */
+  private static final void getTableViews(Control parentControl, List<TableView> tableViews) {
+    if (parentControl instanceof TableView) {
+      tableViews.add((TableView) parentControl);
+    } else {
+      if (parentControl instanceof Composite) {
+        final Control[] children = ((Composite) parentControl).getChildren();
+        for (Control child : children) {
+          getTableViews(child, tableViews);
+        }
+      } else {
+        if (parentControl instanceof Shell) {
+          final Control[] children = ((Shell) parentControl).getChildren();
+          for (Control child : children) {
+            getTableViews(child, tableViews);
+          }
+        }
+      }
+    }
   }
 }

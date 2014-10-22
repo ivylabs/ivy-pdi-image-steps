@@ -26,6 +26,8 @@ import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.step.StepMetaInterface;
 import org.w3c.dom.Node;
 
+import com.ivyis.di.ui.trans.steps.image.ImageConverterStepDialog;
+
 /**
  * This class is responsible for implementing functionality regarding step meta. All Kettle steps
  * have an extension of this where private fields have been added with public accessors.
