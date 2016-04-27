@@ -37,13 +37,13 @@ import com.ivyis.di.ui.trans.steps.image.ImageBase64Dialog;
  * @author <a href="mailto:joel.latino@ivy-is.co.uk">Joel Latino</a>
  * @since 1.0.0
  */
-@Step(id = "ImageBase64", name = "ImageBase64.Step.Name",
-    description = "ImageBase64.Step.Description",
-    categoryDescription = "ImageBase64.Step.Category",
-    image = "com/ivyis/di/trans/steps/image/ImageBase64.png",
-    i18nPackageName = "com.ivyis.di.trans.steps.image",
-    casesUrl = "https://github.com/ivylabs", documentationUrl = "https://github.com/ivylabs",
-    forumUrl = "https://github.com/ivylabs")
+//@Step(id = "ImageBase64", name = "ImageBase64.Step.Name",
+//    description = "ImageBase64.Step.Description",
+//    categoryDescription = "ImageBase64.Step.Category",
+//    image = "com/ivyis/di/trans/steps/image/ImageBase64.png",
+//    i18nPackageName = "com.ivyis.di.trans.steps.image",
+//    casesUrl = "https://github.com/ivylabs", documentationUrl = "https://github.com/ivylabs",
+//    forumUrl = "https://github.com/ivylabs")
 public class ImageBase64Meta extends BaseStepMeta implements StepMetaInterface {
 
   /** for i18n purposes. **/
