@@ -2,6 +2,10 @@ package com.ivyis.di.trans.steps.image.hash;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -38,6 +42,17 @@ public class ImageHashStep extends BaseStep implements StepInterface {
   public ImageHashStep(
       StepMeta s, StepDataInterface stepDataInterface, int c, TransMeta t, Trans dis) {
     super(s, stepDataInterface, c, t, dis);
+  }
+
+  private static HttpURLConnection getConnection(String url)
+      throws URISyntaxException, IOException {
+    final URL urlFromParameter = new URL(url);
+    final URI uri = new URI(urlFromParameter.getProtocol(), urlFromParameter.getUserInfo(),
+        urlFromParameter.getHost(), urlFromParameter.getPort(), urlFromParameter.getPath(),
+        urlFromParameter.getQuery(), urlFromParameter.getRef());
+    final HttpURLConnection con = (HttpURLConnection) uri.toURL().openConnection();
+    con.setInstanceFollowRedirects(false);
+    return con;
   }
 
   /**
@@ -77,7 +92,15 @@ public class ImageHashStep extends BaseStep implements StepInterface {
       BufferedImage image = null;
       try {
         if (data.imageFromWeb) {
-          image = ImageIO.read(new URL(fileFromPath));
+          HttpURLConnection con = getConnection(fileFromPath);
+           int responseCode = con.getResponseCode();
+          while (responseCode == HttpURLConnection.HTTP_MOVED_PERM
+              || responseCode == HttpURLConnection.HTTP_MOVED_TEMP) {
+            final String newLocation = con.getHeaderField("Location");
+            con = getConnection(newLocation);
+            responseCode = con.getResponseCode();
+          }
+          image = ImageIO.read(con.getInputStream());
         } else {
           image = ImageIO.read(new File(fileFromPath));
         }
